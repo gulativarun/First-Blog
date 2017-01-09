@@ -1,40 +1,35 @@
+{% load staticfiles %}
+
 <html>
+
 <head>
-
-  <link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-	<div>
+<div class="page-header">
+    <h1><a href="/">Hellcracker's Blog</a></h1>
+</div>
+<link href="https://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://getbootstrap.com/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+</head>
+<body>
+<div>
     <h1><a href="/">First Blog</a></h1>
 </div>
 
-{% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
-        <p>{{ post.text|linebreaksbr }}</p>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>published: {{ post.published_date }}</p>
+                    </div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-{% endfor %}
-</head>
-<body>
-	<div>
-	<h1><a href="">First Blog</a></h1>
-	</div>
-	
-	<div>
-	<p> <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My first post</a></h2>
-            <p>Hello there this is my first post on this blog</p>
-        </div>
-
-        <div>
-            <p>published: 14.06.2014, 12:14</p>
-            <h2><a href="">My second post</a></h2>
-            <p>This is my 2nd post on this blog</p>
-        </div>
-
-   
+</div>
 </body>
 </html>
